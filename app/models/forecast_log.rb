@@ -6,5 +6,5 @@ class ForecastLog
   field :city, type: Hash
   field :forecasts, type: Array
 
-  index({ session_id: 1 }, { name: "session_id_index" })
+  index({ session_id: 1 }, name: 'session_id_index')
 end

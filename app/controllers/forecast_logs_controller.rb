@@ -1,12 +1,12 @@
 class ForecastLogsController < ApplicationController
-
   def create
-    render :json => { :success => true, :logs => [{temp_min: 32, temp_max: 44, probPrec: 0.4}] }
+    forecast_service = DarkskyApiService.new(permitted_params['lat'], permitted_params['lat'])
+    render json: forecast_service.fetch_forecast_data
   end
 
   private
 
-  def permited_params
+  def permitted_params
     @permit_params ||= params.permit(:id, :lng, :lat, :localeFullName)
   end
 end
