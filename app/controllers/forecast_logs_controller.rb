@@ -1,0 +1,2 @@
+class ForecastLogsController < ApplicationController
+end
