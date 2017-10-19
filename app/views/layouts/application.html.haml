@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title WeatherAggregator
     = csrf_meta_tags
+    = action_cable_meta_tag
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.configuration.google_api_key}&libraries=places"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
