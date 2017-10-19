@@ -14,9 +14,6 @@ class ForecastLog
   validate :city_check
   validates :session_id, presence: true
 
-  scope :city, ->(id) { where('city.id' => id) }
-  scope :actual, ->(date) { where(:created_at.gte => date) }
-
   private
 
   def city_check
