@@ -10,7 +10,7 @@
 
   %p Forecasts history:
   - @forecast_logs.each do |log|
-    .card
+    .card{id: log.city['id'], "data-created": log.created_at }
       .card-header.text-center.bg-info.text-light
         %h6
           %span #{log.city["localeFullName"]}:
