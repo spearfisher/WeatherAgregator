@@ -7,6 +7,9 @@
     = action_cable_meta_tag
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.configuration.google_api_key}&libraries=places"
     = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity: "sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin: "anonymous"
+    = javascript_include_tag "https://use.fontawesome.com/8ad4b9ec15.js"
+
     = javascript_include_tag 'application'
   %body
     = yield

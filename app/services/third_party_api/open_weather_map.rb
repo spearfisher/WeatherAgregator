@@ -32,6 +32,7 @@ module ThirdPartyApi
       return if parsed_data['message']
 
       {
+        provider: PROVIDER,
         precipType: parsed_data['weather'].first['main'],
         t_min: parsed_data['main']['temp_min'],
         t_max: parsed_data['main']['temp_max'],

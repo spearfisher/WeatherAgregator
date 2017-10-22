@@ -34,6 +34,7 @@ module ThirdPartyApi
       daily_forecast = parsed_data['daily']['data'].first
 
       {
+        provider: PROVIDER,
         precipType: daily_forecast['precipType'],
         t_min: daily_forecast['temperatureMin'],
         t_max: daily_forecast['temperatureMax'],

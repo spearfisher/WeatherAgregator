@@ -6,7 +6,7 @@ class ForecastService
   def fetch
     third_party_apis.each do |api|
       provider = api.new(@current_log.city['lat'], @current_log.city['lng'])
-      @current_log.forecasts << { api::PROVIDER => provider.fetch_forecast_data }
+      @current_log.forecasts << provider.fetch_forecast_data
     end
 
     @current_log

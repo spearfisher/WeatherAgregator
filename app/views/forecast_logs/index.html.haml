@@ -1,1 +1,34 @@
-%input{ id: "searchTextField", type: "text", size: "50", placeholder: "Start typing..."}
+.container
+
+  .mb-5.mt-5
+    .row.justify-content-center
+      .col-6
+        %label
+          %h4 Please enter a City name:
+      .col-6
+        %input#searchTextField.form-control{ type: "text", size: "30", placeholder: "Start typing..."}
+
+  %p Forecasts history:
+  - @forecast_logs.each do |log|
+    .card
+      .card-header.text-center.bg-info.text-light
+        %h6
+          %span #{log.city["localeFullName"]}:
+          %span= distance_of_time_in_words(Time.now.utc, log.created_at)
+      .card-body.bg-info.text-light
+        .row
+          - log.forecasts.each do |forecast|
+            .col-sm-6
+              %p
+                %span.card-title  Forecast provider:
+                %u.text-uppercase #{forecast['provider']}
+              %p
+                %span Temperature:
+                %i.fa.fa-long-arrow-up.text-warning
+                %span #{forecast['t_max']}
+                %i.fa.fa-long-arrow-down.text-primary
+                %span #{forecast['t_min']}
+              %p
+                %span Description:
+                = precip_icon(forecast['precipType'] || 'sunny')
+                %span= precip_info forecast['precipType'], forecast['precipProbability']
