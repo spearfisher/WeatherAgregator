@@ -1,20 +1,16 @@
 App.forecast = App.cable.subscriptions.create("ForecastChannel", {
   received: function(data) {
-      console.log("!!!!! received !!!!!!!");
-      console.log(data);
+    var input = document.getElementById('searchTextField');
+    input.readOnly = false;
 
-      var input = document.getElementById('searchTextField');
-      input.readOnly = false;
+    if (data.error) {
+      console.error(data.error);
+      return
+    }
 
-
-      if (data.error) {
-          console.error(data.error);
-          return
-      }
-
-      var wrapper = document.getElementById("forecast-wrapper");
-      var template = forecastTemplate(data.data);
-      wrapper.insertBefore(template, wrapper.firstElementChild);
+    var wrapper = document.getElementById("forecast-wrapper");
+    var template = forecastTemplate(data.data);
+    wrapper.insertBefore(template, wrapper.firstElementChild);
   },
 
   fetchForecast: function(city) {
@@ -27,7 +23,7 @@ function forecastTemplate(data) {
     <div class='card' data-created='${data.created_at}' id='${data.city.id}'>
       <div class='card-header text-center bg-info text-light'>
         <h6>
-          <span>${data.city.localeFullName}</span>
+          <span>${data.city.localeFullName}: </span>
           <span>Just now</span>
         </h6>
       </div>
@@ -50,7 +46,7 @@ function forecastTemplate(data) {
         </p>
         <p>
           <span>Description:</span>
-            ${precipIcon(f.precipType) || ""}
+            ${precipIcon(f.precipType || "")}
             <span>${precipInfo(f.precipType, f.precipProbability)}</span>
         </p>
       </div>`;
