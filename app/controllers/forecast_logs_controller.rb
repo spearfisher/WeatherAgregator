@@ -1,5 +1,5 @@
 class ForecastLogsController < ApplicationController
   def index
-    @forecast_logs = ForecastLog.where(session_id: session.id).order_by(created_at: 'desc')
+    @forecast_logs = Queries::ForecastLogQuery.new.find_by_session(session.id).to_a
   end
 end

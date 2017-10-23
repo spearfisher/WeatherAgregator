@@ -14,6 +14,10 @@ module Queries
       @current_log
     end
 
+    def find_by_session(id)
+      ForecastLog.where(session_id: id).order_by(created_at: 'desc')
+    end
+
     private
 
     def existing_logs(city_id)
