@@ -3,7 +3,7 @@ module ApplicationHelper
     return 'Sunny' if type.blank?
 
     out = "#{type.capitalize} "
-    out << "#{probability * 100}% " if probability.present?
+    out << "#{(probability * 100).to_i}% " if probability.present?
     out.html_safe
   end
 
