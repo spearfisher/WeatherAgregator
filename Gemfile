@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'rails-controller-testing'
+  gem 'mongoid-rspec'
 end
 
 group :development do
