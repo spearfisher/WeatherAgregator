@@ -1,5 +1,10 @@
 .container
 
+  .card
+    .card-block.text-center.bg-info.text-white
+      %h3.card-title Welcome to WeatherAggregator service!
+      %p.card-text To see weather forecast for your city just start typing it's name.
+
   .mb-5.mt-5
     .row.justify-content-center
       .col-6
@@ -8,7 +13,10 @@
       .col-6
         %input#searchTextField.form-control{ type: "text", size: "30", placeholder: "Start typing..."}
 
-  %p Forecasts history:
+  - if @forecast_logs.present?
+    %p Forecasts history:
+
+
   #forecast-wrapper
     - @forecast_logs.each do |log|
       .card{id: log.city['id'], "data-created": log.created_at }

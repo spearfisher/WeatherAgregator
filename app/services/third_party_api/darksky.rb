@@ -1,30 +1,14 @@
 module ThirdPartyApi
-  class Darksky
+  class Darksky < AbstractProviderApi
     PROVIDER = 'darksky'.freeze
     BASE_URL = 'https://api.darksky.net/forecast'.freeze
     API_KEY = ENV['DARKSKY_API_KEY'].freeze
     QUERY_PARAMS = 'exclude=minutely,currently,hourly,flags&units=si'.freeze
 
-    def initialize(lat, lng)
-      @latitude = lat
-      @longitude = lng
-    end
-
-    def fetch_forecast_data
-      response = http_executor.call
-      prepare(response.body) if response
-    rescue Exceptions::InvalidFormat => e
-      logger.error e
-    end
-
     private
 
     def url
       "#{BASE_URL}/#{API_KEY}/#{@latitude},#{@longitude}?#{QUERY_PARAMS}"
-    end
-
-    def http_executor
-      HttpExecutor.new(url)
     end
 
     def prepare(body)
