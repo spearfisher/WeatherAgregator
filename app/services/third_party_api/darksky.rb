@@ -25,7 +25,7 @@ module ThirdPartyApi
         precipProbability: daily_forecast['precipProbability']
       }
     rescue StandardError => e
-      logger.error e
+      Rails.logger.error e
       raise Exceptions::InvalidFormat, "Can't parse data from #{PROVIDER.upcase} provider. Wrong data format."
     end
   end

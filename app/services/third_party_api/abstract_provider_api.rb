@@ -9,7 +9,8 @@ module ThirdPartyApi
       response = http_executor.call
       prepare(response.body) if response
     rescue Exceptions::InvalidFormat => e
-      logger.error e
+      Rails.logger.error e
+      nil
     end
 
     protected

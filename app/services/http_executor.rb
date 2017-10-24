@@ -8,6 +8,6 @@ class HttpExecutor
   def call
     RestClient::Request.execute(url: @url, method: @method, headers: @headers)
   rescue RestClient::Exception => e
-    logger.error e
+    Rails.logger.error e
   end
 end

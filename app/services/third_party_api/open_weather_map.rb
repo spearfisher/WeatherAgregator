@@ -23,7 +23,7 @@ module ThirdPartyApi
         precipProbability: nil # As OpenWeatherMap don't have precipitation probability parameter
       }
     rescue StandardError => e
-      logger.error e
+      Rails.logger.error e
       raise Exceptions::InvalidFormat, "Can't parse data from #{PROVIDER.upcase} provider. Wrong data format."
     end
   end
