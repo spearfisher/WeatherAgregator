@@ -1,6 +1,6 @@
 development:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: <%= ENV['REDIS_URL'] %>
 
 test:
   adapter: async
@@ -9,3 +9,8 @@ production:
   adapter: redis
   url: redis://localhost:6379/1
   channel_prefix: WeatherAggregator_production
+
+docker_development:
+  adapter: redis
+  url: <%= ENV['REDIS_URL'] %>
+  channel_prefix: WeatherAggregator_docker_dev

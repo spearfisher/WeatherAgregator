@@ -18,6 +18,3 @@
 
 .byebug_history
 /.idea/*
-
-# Ignore mongoDB config
-/config/mongoid.yml
