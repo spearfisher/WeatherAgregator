@@ -41,4 +41,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   ENV["DARKSKY_API_KEY"] = "KeyForDarksky"
+  ENV["OPEN_WEATHER_MAP_API_KEY"] = "KeyForOpenWeatherMap"
 end
