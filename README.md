@@ -2,10 +2,9 @@
  
 This document describes how to launch this Ruby on Rails application.
 
-There is two options for app launching: with docker or manual.
+There are several options for app launching: with docker or manual.
 
 Application uses MongoDB, Redis and Sidekiq. So all those applications should be started before rails, or just use docker.
-
 
  ## Start application with docker
  
